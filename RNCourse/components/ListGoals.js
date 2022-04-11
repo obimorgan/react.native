@@ -10,9 +10,9 @@ export default function ListGoals(props) {
 			<Pressable
 				android_ripple={{ color: '#e63946' }}
 				style={({ pressed }) => pressed && styles.pressed}
-				// onPress={props.onDeleteItem.bind(this, props.id)}
+				onPress={props.onDeleteItem.bind(this, props.id)}
 			>
-				<Text>{props.text}</Text>
+				<Text style={{ color: '#03071e', fontWeight: '600' }}>{props.text}</Text>
 			</Pressable>
 		</View>
 	)

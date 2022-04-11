@@ -5,6 +5,7 @@ import { Button, FlatList, View } from 'react-native'
 import { styles } from '../styles/homeStyles'
 import AddGoal from './AddGoal'
 import ListGoals from './ListGoals'
+import { StatusBar } from 'expo-status-bar'
 
 const Home = () => {
 	const [goals, setGoals] = useState([])
@@ -33,26 +34,29 @@ const Home = () => {
 		setOpenModal(false)
 	}
 	return (
-		<View style={styles.AppContainer}>
-			<View>
-				<Button title='Add Goal' onPress={handleOpenModal} />
+		<>
+			<StatusBar style='light' />
+			<View style={styles.AppContainer}>
+				<View>
+					<Button title='Add Goal' onPress={handleOpenModal} />
+				</View>
+				<View style={styles.AddGoalContainer}>
+					<AddGoal handleAddGoal={handleAddGoal} openModal={openModal} closeModal={hadleCloseModal} />
+				</View>
+				<View style={styles.goalsContainer}>
+					<FlatList
+						data={goals}
+						renderItem={(itemData) => {
+							return <ListGoals id={itemData.item.id} text={itemData.item.text} onDeleteItem={deleteGoalHandler} />
+						}}
+						keyExtractor={(item, index) => {
+							return item.id
+						}}
+						alwaysBounceVertical={false}
+					></FlatList>
+				</View>
 			</View>
-			<View style={styles.AddGoalContainer}>
-				<AddGoal handleAddGoal={handleAddGoal} openModal={openModal} closeModal={hadleCloseModal} />
-			</View>
-			<View style={styles.goalsContainer}>
-				<FlatList
-					data={goals}
-					renderItem={(itemData) => {
-						return <ListGoals id={itemData.item.id} text={itemData.item.text} onDeleteItem={deleteGoalHandler} />
-					}}
-					keyExtractor={(item, index) => {
-						return item.id
-					}}
-					alwaysBounceVertical={false}
-				></FlatList>
-			</View>
-		</View>
+		</>
 	)
 }
 export default Home

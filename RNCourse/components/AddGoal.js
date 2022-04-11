@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from 'react'
-import { View, TextInput, Modal, Button } from 'react-native'
+import { View, TextInput, Modal, Button, Image } from 'react-native'
 import { styles } from '../styles/homeStyles'
 
 function AddGoal(props) {
@@ -19,6 +19,7 @@ function AddGoal(props) {
 	return (
 		<Modal visible={props.openModal} animationType='slide'>
 			<View style={styles.AddGoalContainer}>
+				<Image styles={styles.image} source={require('../assets/favicon.png')} />
 				<TextInput
 					value={enteredGoalText}
 					style={styles.AddGoalInput}
@@ -27,10 +28,10 @@ function AddGoal(props) {
 				/>
 				<View style={styles.buttonsContainer}>
 					<View style={styles.buttons}>
-						<Button title='Add Goal' onPress={addGoalHandler} />
+						<Button color='#e5e5e5' title='Add Goal' onPress={addGoalHandler} />
 					</View>
 					<View style={styles.buttons}>
-						<Button title='Close' onPress={props.closeModal} />
+						<Button color='#f48c06' title='Close' onPress={props.closeModal} />
 					</View>
 				</View>
 			</View>
