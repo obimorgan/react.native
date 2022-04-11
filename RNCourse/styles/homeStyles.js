@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
 	},
 	goalItem: {
 		borderWidth: 1,
-		borderColor: '#cccccc',
+		borderColor: '#e85d04',
 		padding: 10,
 		marginTop: 5,
 		backgroundColor: '#e85d04',
